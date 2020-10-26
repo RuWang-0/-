@@ -1,4 +1,4 @@
-package com.fduexchange.porent.entity;
+package com.bbs.porent.entity;
 
 import java.io.Serializable;
 import java.util.Date;
