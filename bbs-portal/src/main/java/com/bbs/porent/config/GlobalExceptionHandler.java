@@ -1,4 +1,4 @@
-package com.fduexchange.porent.config;
+package com.bbs.porent.config;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
