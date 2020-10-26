@@ -1,8 +1,8 @@
-package com.fduexchange.porent.utils;
+package com.bbs.porent.utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fduexchange.porent.entity.FduexchangeResult;
+import com.bbs.porent.entity.BbsResult;
 
 import java.io.IOException;
 
@@ -10,11 +10,11 @@ public class JsonUtils {
     // 定义jackson对象
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
-    public static FduexchangeResult jsonToFduexchangeResult(String json, Class<?> clazz) {
+    public static BbsResult jsonToBbsResult(String json, Class<?> clazz) {
 
         try {
             if (clazz == null) {
-                return MAPPER.readValue(json, FduexchangeResult.class);
+                return MAPPER.readValue(json, BbsResult.class);
             }
 
             JsonNode jsonNode = MAPPER.readTree(json);
@@ -28,7 +28,7 @@ public class JsonUtils {
                 }
             }
 
-            return new FduexchangeResult(jsonNode.get("status").intValue(), obj, jsonNode.get("error").asText());
+            return new BbsResult(jsonNode.get("status").intValue(), obj, jsonNode.get("error").asText());
         } catch (IOException e) {
             return null;
         }
