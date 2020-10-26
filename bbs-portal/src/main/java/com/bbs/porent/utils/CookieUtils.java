@@ -1,4 +1,4 @@
-package com.fduexchange.porent.utils;
+package com.bbs.porent.utils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
