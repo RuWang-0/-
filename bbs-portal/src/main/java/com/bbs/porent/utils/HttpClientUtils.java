@@ -1,4 +1,4 @@
-package com.fduexchange.porent.utils;
+package com.bbs.porent.utils;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
