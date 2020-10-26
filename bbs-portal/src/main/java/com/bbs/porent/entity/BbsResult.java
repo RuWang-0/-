@@ -1,4 +1,4 @@
-package com.fduexchange.porent.entity;
+package com.bbs.porent.entity;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.Serializable;
 
 
-public class FduexchangeResult implements Serializable {
+public class BbsResult implements Serializable {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -40,7 +40,7 @@ public class FduexchangeResult implements Serializable {
         this.error = error;
     }
 
-    public FduexchangeResult(Integer status, Object data, String error) {
+    public BbsResult(Integer status, Object data, String error) {
         this.status = status;
         this.data = data;
         this.error = error;
