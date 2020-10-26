@@ -1,8 +1,8 @@
-package com.fduexchange.porent.interceptor;
+package com.bbs.porent.interceptor;
 
-import com.fduexchange.porent.entity.User;
-import com.fduexchange.porent.service.UserService;
-import com.fduexchange.porent.utils.CookieUtils;
+import com.bbs.porent.entity.User;
+import com.bbs.porent.service.UserService;
+import com.bbs.porent.utils.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.HandlerInterceptor;
