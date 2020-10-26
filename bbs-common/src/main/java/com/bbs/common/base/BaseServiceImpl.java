@@ -1,10 +1,13 @@
-package base;
+package com.bbs.common.base;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 
+/**
+ * Created by lhr on 17-8-1.
+ */
 public class BaseServiceImpl<E extends JpaRepository,T> implements BaseService<T>{
 
     @Autowired
@@ -27,7 +30,7 @@ public class BaseServiceImpl<E extends JpaRepository,T> implements BaseService<T
 
     @Override
     public List<T> findAll() {
-        return repository.findAll();
+       return repository.findAll();
     }
 
     @Override

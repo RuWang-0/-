@@ -1,15 +1,18 @@
-package entity;
+package com.bbs.common.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import utils.Constants;
+import com.bbs.common.utils.Constants;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 用户
+ */
 @Entity
-@Table(name="quark_user")
+@Table(name="bbs_user")
 public class User implements Serializable {
 
     @Id
@@ -133,4 +136,3 @@ public class User implements Serializable {
                 '}';
     }
 }
-

@@ -1,15 +1,19 @@
-package entity;
+package com.bbs.common.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import utils.Constants;
+import com.bbs.common.utils.Constants;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 帖子
+ */
 @Entity
-@Table(name = "quark_posts")
+@Table(name = "bbs_posts")
 public class Posts implements Serializable {
+
     @Id
     @GeneratedValue
     private Integer id;
@@ -42,6 +46,7 @@ public class Posts implements Serializable {
     @ManyToOne
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
+
 
     //回复数量
     @Column(name = "reply_count")
