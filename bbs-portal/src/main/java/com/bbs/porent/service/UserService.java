@@ -1,6 +1,6 @@
-package com.fduexchange.porent.service;
+package com.bbs.porent.service;
 
-import com.fduexchange.porent.entity.User;
+import com.bbs.porent.entity.User;
 
 public interface UserService {
 
