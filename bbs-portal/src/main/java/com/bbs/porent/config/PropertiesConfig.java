@@ -1,4 +1,4 @@
-package com.fduexchange.porent.config;
+package com.bbs.porent.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
