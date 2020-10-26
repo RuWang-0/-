@@ -1,10 +1,10 @@
-package com.fduexchange.porent.service.impl;
+package com.bbs.porent.service.impl;
 
-import com.fduexchange.porent.entity.QuarkResult;
-import com.fduexchange.porent.entity.User;
-import com.fduexchange.porent.service.UserService;
-import com.fduexchange.porent.utils.HttpClientUtils;
-import com.fduexchange.porent.utils.JsonUtils;
+import com.bbs.porent.entity.QuarkResult;
+import com.bbs.porent.entity.User;
+import com.bbs.porent.service.UserService;
+import com.bbs.porent.utils.HttpClientUtils;
+import com.bbs.porent.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getUserByApi(String token) {
         String s = HttpClientUtils.doGet(api_getUserByToken + token);
-        FduexchangeResult fduexchangeResult = JsonUtils.jsonToFduexchangeResult(s, User.class);
-        User data= (User) fduexchangeResult.getData();
+        BbsResult bbsResult = JsonUtils.jsonToBbsResult(s, User.class);
+        User data= (User) bbsResult.getData();
         return data;
     }
 }
