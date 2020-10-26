@@ -1,6 +1,6 @@
-package com.fduexchange.porent.config;
+package com.bbs.porent.config;
 
-import com.fduexchange.porent.interceptor.LoginInterceptor;
+import com.bbs.porent.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
