@@ -1,6 +1,6 @@
 package com.bbs.porent.service.impl;
 
-import com.bbs.porent.entity.QuarkResult;
+import com.bbs.porent.entity.BbsResult;
 import com.bbs.porent.entity.User;
 import com.bbs.porent.service.UserService;
 import com.bbs.porent.utils.HttpClientUtils;
