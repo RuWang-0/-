@@ -1,6 +1,7 @@
-package base;
+package com.bbs.common.base;
 
 import java.util.List;
+
 
 public interface BaseService<T> {
 
@@ -28,4 +29,5 @@ public interface BaseService<T> {
      * @return
      */
     List<T> save(Iterable<T> iterable);
+
 }

@@ -1,11 +1,13 @@
-package entity;
+package com.bbs.common.entity;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 
-
+/**
+ * 标签
+ */
 @Entity
-@Table(name = "quark_label")
+@Table(name = "bbs_label")
 public class Label implements Serializable {
 
     @Id
@@ -54,5 +56,4 @@ public class Label implements Serializable {
     public void setDetails(String details) {
         this.details = details;
     }
-
 }
