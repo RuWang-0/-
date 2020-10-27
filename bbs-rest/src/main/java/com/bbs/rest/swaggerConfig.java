@@ -1,4 +1,4 @@
-package rest;
+package com.bbs.rest;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
