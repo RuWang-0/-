@@ -1,7 +1,7 @@
 package com.bbs.controller;
 
 import com.bbs.common.base.BaseController;
-import com.bbs.common.dto.bbsResult;
+import com.bbs.common.dto.BBSResult;
 import com.bbs.common.entity.Posts;
 import com.bbs.common.entity.User;
 import com.bbs.service.NotificationService;
@@ -43,18 +43,18 @@ public class UserController extends BaseController {
             @ApiImplicitParam(name = "password", value = "用户密码",dataType = "String")
     })
     @PostMapping
-    public bbsResult checkUserName(String email,String username,String password) {
-        bbsResult result = restProcessor(() -> {
+    public BBSResult checkUserName(String email,String username,String password) {
+        BBSResult result = restProcessor(() -> {
             if (!userService.checkUserName(username))
-                return bbsResult.warn("用户名已存在，请重新输入");
+                return BBSResult.warn("用户名已存在，请重新输入");
 
             if (!userService.checkUserEmail(email))
-                return bbsResult.warn("用户邮箱已存在，请重新输入");
+                return BBSResult.warn("用户邮箱已存在，请重新输入");
 
             else
                 userService.createUser(email,username,password);
 
-            return bbsResult.ok();
+            return BBSResult.ok();
 
         });
         return result;
@@ -66,16 +66,16 @@ public class UserController extends BaseController {
             @ApiImplicitParam(name = "password", value = "用户密码",dataType = "String")
     })
     @PostMapping("/login")
-    public bbsResult Login(String email,String password) {
+    public BBSResult Login(String email,String password) {
 
-        bbsResult result = restProcessor(() -> {
+        BBSResult result = restProcessor(() -> {
             User loginUser = userService.findByEmail(email);
             if (loginUser == null)
-                return bbsResult.warn("用户邮箱不存在，请重新输入");
+                return BBSResult.warn("用户邮箱不存在，请重新输入");
             if (!loginUser.getPassword().equals(DigestUtils.md5DigestAsHex(password.getBytes())))
-                return bbsResult.warn("用户密码错误，请重新输入");
+                return BBSResult.warn("用户密码错误，请重新输入");
             String token = userService.LoginUser(loginUser);
-            return bbsResult.ok(token);
+            return BBSResult.ok(token);
         });
         return result;
     }
@@ -85,11 +85,11 @@ public class UserController extends BaseController {
             @ApiImplicitParam(name = "token", value = "发送给用户的唯一令牌",dataType = "String"),
     })
     @GetMapping("/{token}")
-    public bbsResult getUserByToken(@PathVariable String token) {
-        bbsResult result = restProcessor(() -> {
+    public BBSResult getUserByToken(@PathVariable String token) {
+        BBSResult result = restProcessor(() -> {
             User user = userService.getUserByToken(token);
-            if (user == null) return bbsResult.warn("session过期,请重新登录");
-            return bbsResult.ok(user);
+            if (user == null) return BBSResult.warn("session过期,请重新登录");
+            return BBSResult.ok(user);
         });
 
         return result;
@@ -100,15 +100,15 @@ public class UserController extends BaseController {
             @ApiImplicitParam(name = "token", value = "发送给用户的唯一令牌",dataType = "String"),
     })
     @GetMapping("/message/{token}")
-    public bbsResult getUserAndMessageByToken(@PathVariable String token){
-        bbsResult result = restProcessor(() -> {
+    public BBSResult getUserAndMessageByToken(@PathVariable String token){
+        BBSResult result = restProcessor(() -> {
             HashMap<String, Object> map = new HashMap<>();
             User user = userService.getUserByToken(token);
-            if (user == null) return bbsResult.warn("session过期,请重新登录");
+            if (user == null) return BBSResult.warn("session过期,请重新登录");
             long count = notificationService.getNotificationCount(user.getId());
             map.put("user",user);
             map.put("messagecount",count);
-            return bbsResult.ok(map);
+            return BBSResult.ok(map);
         });
 
         return result;
@@ -122,12 +122,12 @@ public class UserController extends BaseController {
             @ApiImplicitParam(name = "sex", value = "要修改的性别：数值0为男，1为女",dataType = "int"),
     })
     @PutMapping("/{token}")
-    public bbsResult updateUser(@PathVariable("token") String token,String username,String signature,Integer sex){
-        bbsResult result = restProcessor(() -> {
-            if (!userService.checkUserName(username)) return bbsResult.warn("用户名重复！");
-            if (sex != 0 && sex != 1) return bbsResult.warn("性别输入错误！");
+    public BBSResult updateUser(@PathVariable("token") String token,String username,String signature,Integer sex){
+        BBSResult result = restProcessor(() -> {
+            if (!userService.checkUserName(username)) return BBSResult.warn("用户名重复！");
+            if (sex != 0 && sex != 1) return BBSResult.warn("性别输入错误！");
             userService.updateUser(token, username, signature, sex);
-            return bbsResult.ok();
+            return BBSResult.ok();
         });
 
         return result;
@@ -140,11 +140,11 @@ public class UserController extends BaseController {
             @ApiImplicitParam(name = "oldpsd",value = "新的密码",dataType = "String"),
     })
     @PutMapping("/password/{token}")
-    public bbsResult updatePassword(@PathVariable("token") String token,String newpsd,String oldpsd){
+    public BBSResult updatePassword(@PathVariable("token") String token,String newpsd,String oldpsd){
 
-        bbsResult result = restProcessor(() -> {
+        BBSResult result = restProcessor(() -> {
             userService.updateUserPassword(token,oldpsd,newpsd);
-            return bbsResult.ok();
+            return BBSResult.ok();
         });
         return result;
     }
@@ -154,10 +154,10 @@ public class UserController extends BaseController {
             @ApiImplicitParam(name = "token", value = "发送给用户的唯一令牌",dataType = "String")
     })
     @PostMapping("/logout")
-    public bbsResult logout(String token) {
-        bbsResult result = restProcessor(() -> {
+    public BBSResult logout(String token) {
+        BBSResult result = restProcessor(() -> {
             userService.LogoutUser(token);
-            return bbsResult.ok();
+            return BBSResult.ok();
         });
 
         return result;
@@ -168,15 +168,15 @@ public class UserController extends BaseController {
             @ApiImplicitParam(name = "id", value = "用户的id", dataType = "int")
     })
     @GetMapping("/detail/{userid}")
-    public bbsResult getUserById(@PathVariable("userid") Integer userid){
-        bbsResult result = restProcessor(() -> {
+    public BBSResult getUserById(@PathVariable("userid") Integer userid){
+        BBSResult result = restProcessor(() -> {
             User user = userService.findOne(userid);
-            if (user == null || userid == null) return bbsResult.warn("用户不存在");
+            if (user == null || userid == null) return BBSResult.warn("用户不存在");
             List<Posts> postss = postsService.getPostsByUser(user);
             HashMap<String, Object> map = new HashMap<>();
             map.put("posts",postss);
             map.put("user",user);
-            return bbsResult.ok(map);
+            return BBSResult.ok(map);
         });
         return result;
     }

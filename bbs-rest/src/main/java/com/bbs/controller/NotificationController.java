@@ -1,7 +1,7 @@
 package com.bbs.controller;
 
 import com.bbs.common.base.BaseController;
-import com.bbs.common.dto.bbsResult;
+import com.bbs.common.dto.BBSResult;
 import com.bbs.common.entity.Notification;
 import com.bbs.common.entity.User;
 import com.bbs.service.NotificationService;
@@ -31,12 +31,12 @@ public class NotificationController extends BaseController {
             @ApiImplicitParam(name = "uid",value = "用户的id",dataType ="int")
     })
     @GetMapping("/{uid}")
-    public bbsResult getAllNotification(@PathVariable("uid") Integer uid) {
-        bbsResult result = restProcessor(() -> {
+    public BBSResult getAllNotification(@PathVariable("uid") Integer uid) {
+        BBSResult result = restProcessor(() -> {
             User user = userService.findOne(uid);
-            if (user==null) return bbsResult.warn("用户不存在！");
+            if (user==null) return BBSResult.warn("用户不存在！");
             List<Notification> list = notificationService.findByUser(user);
-            return bbsResult.ok(list);
+            return BBSResult.ok(list);
         });
         return result;
     }
@@ -46,12 +46,12 @@ public class NotificationController extends BaseController {
             @ApiImplicitParam(name = "uid",value = "用户的id",dataType ="int")
     })
     @DeleteMapping("/{uid}")
-    public bbsResult deleteAllNotification(@PathVariable("uid") Integer uid){
-        bbsResult result = restProcessor(() -> {
+    public BBSResult deleteAllNotification(@PathVariable("uid") Integer uid){
+        BBSResult result = restProcessor(() -> {
             User user = userService.findOne(uid);
-            if (user == null) return bbsResult.warn("用户不存在！");
+            if (user == null) return BBSResult.warn("用户不存在！");
             notificationService.deleteByUser(user);
-            return bbsResult.ok();
+            return BBSResult.ok();
         });
 
         return result;

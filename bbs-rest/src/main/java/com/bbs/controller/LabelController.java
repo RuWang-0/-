@@ -1,7 +1,7 @@
 package com.bbs.controller;
 
 import com.bbs.common.base.BaseController;
-import com.bbs.common.dto.bbsResult;
+import com.bbs.common.dto.BBSResult;
 import com.bbs.common.entity.Label;
 import com.bbs.service.LabelService;
 import io.swagger.annotations.Api;
@@ -25,11 +25,11 @@ public class LabelController extends BaseController{
 
     @ApiOperation("获取标签")
     @GetMapping
-    public bbsResult getAllLabel(){
+    public BBSResult getAllLabel(){
 
-        bbsResult result = restProcessor(() -> {
+        BBSResult result = restProcessor(() -> {
             List<Label> labels = labelService.findAll();
-            return bbsResult.ok(labels);
+            return BBSResult.ok(labels);
         });
 
         return result;
