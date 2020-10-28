@@ -1,7 +1,7 @@
 package com.bbs.service;
 
 import com.bbs.common.dto.SocketMessage;
-import com.bbs.controller.WebSocketController;
+import com.bbs.rest.controller.WebSocketController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

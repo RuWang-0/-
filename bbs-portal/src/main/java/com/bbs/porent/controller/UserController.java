@@ -1,11 +1,13 @@
 package com.bbs.porent.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @RequestMapping("/user")
 @Controller
+@CrossOrigin
 public class UserController {
 
 
