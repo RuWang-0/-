@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class LoginInterceptor implements HandlerInterceptor {
 
-    @Autowired
     private UserService userService;
 
     @Value("${cookie_name}")
@@ -23,7 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
 
-        String token = CookieUtils.getCookieValue(httpServletRequest, "QUARK_TOKEN");
+        String token = CookieUtils.getCookieValue(httpServletRequest, "BBS_TOKEN");
         if (token==null) {
             httpServletResponse.sendRedirect("/user/login");
             return false;

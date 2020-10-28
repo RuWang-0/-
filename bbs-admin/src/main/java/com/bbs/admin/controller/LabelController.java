@@ -15,6 +15,7 @@ import java.util.List;
 
 @RequestMapping("/labels")
 @RestController
+@CrossOrigin
 public class LabelController extends BaseController {
 
     @Autowired

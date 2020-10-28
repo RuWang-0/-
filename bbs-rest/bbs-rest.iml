@@ -13,7 +13,22 @@
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="PropertiesConfig" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/com/bbs/config/PropertiesConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bbs/config/WebSocketConfig.java</file>
+        </fileset>
+        <fileset id="fileset2" name="RestConfig" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/com/bbs/config/RestConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bbs/config/MyAdapter.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bbs/config/PropertiesConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bbs/config/RedisConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bbs/rest/RestApplication.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bbs/rest/swaggerConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bbs/config/WebSocketConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bbs/config/CorsFilter.java</file>
+        </fileset>
+      </configuration>
     </facet>
     <facet type="web" name="Web">
       <configuration>
