@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+//scanBasePackages = {"com.bbs.common"}
 @SpringBootApplication
 @EnableCaching
 public class RestApplication {

@@ -3,7 +3,7 @@ package com.bbs.rest.controller;
 import com.bbs.common.base.BaseController;
 import com.bbs.common.dto.BBSResult;
 import com.bbs.common.entity.Label;
-import com.bbs.service.LabelService;
+import com.bbs.rest.service.LabelService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +20,8 @@ import java.util.List;
 @RequestMapping("/label")
 @CrossOrigin
 public class LabelController extends BaseController{
-
     @Autowired
     private LabelService labelService;
-
 
     @ApiOperation("获取标签")
     @GetMapping

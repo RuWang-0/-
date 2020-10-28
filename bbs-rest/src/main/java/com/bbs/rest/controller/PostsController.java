@@ -6,10 +6,10 @@ import com.bbs.common.entity.Label;
 import com.bbs.common.entity.Posts;
 import com.bbs.common.entity.Reply;
 import com.bbs.common.entity.User;
-import com.bbs.service.LabelService;
-import com.bbs.service.PostsService;
-import com.bbs.service.ReplyService;
-import com.bbs.service.UserService;
+import com.bbs.rest.service.LabelService;
+import com.bbs.rest.service.PostsService;
+import com.bbs.rest.service.ReplyService;
+import com.bbs.rest.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -29,7 +29,6 @@ import java.util.HashMap;
 @RequestMapping("/posts")
 @CrossOrigin
 public class PostsController extends BaseController {
-
     @Autowired
     private UserService userService;
 

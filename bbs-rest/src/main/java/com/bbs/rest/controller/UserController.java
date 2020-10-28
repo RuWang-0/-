@@ -4,9 +4,9 @@ import com.bbs.common.base.BaseController;
 import com.bbs.common.dto.BBSResult;
 import com.bbs.common.entity.Posts;
 import com.bbs.common.entity.User;
-import com.bbs.service.NotificationService;
-import com.bbs.service.PostsService;
-import com.bbs.service.UserService;
+import com.bbs.rest.service.NotificationService;
+import com.bbs.rest.service.PostsService;
+import com.bbs.rest.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -27,13 +27,10 @@ import java.util.List;
 @RequestMapping("/user")
 @CrossOrigin
 public class UserController extends BaseController {
-
     @Autowired
     private UserService userService;
-
     @Autowired
     private PostsService postsService;
-
     @Autowired
     private NotificationService notificationService;
 

@@ -2,8 +2,8 @@ package com.bbs.rest.controller;
 
 import com.bbs.common.base.BaseController;
 import com.bbs.common.dto.BBSResult;
-import com.bbs.service.RankService;
-import com.bbs.service.RedisService;
+import com.bbs.rest.service.RankService;
+import com.bbs.rest.service.RedisService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +20,9 @@ import java.util.List;
 @RequestMapping("/rank")
 @CrossOrigin
 public class RankController extends BaseController {
+
     @Autowired
     private RankService rankService;
-
     @Autowired
     private RedisService<List<Object>> redisService;
 

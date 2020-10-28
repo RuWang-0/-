@@ -4,8 +4,8 @@ import com.bbs.common.base.BaseController;
 import com.bbs.common.dto.BBSResult;
 import com.bbs.common.entity.Notification;
 import com.bbs.common.entity.User;
-import com.bbs.service.NotificationService;
-import com.bbs.service.UserService;
+import com.bbs.rest.service.NotificationService;
+import com.bbs.rest.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -20,10 +20,8 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class NotificationController extends BaseController {
-
     @Autowired
     private NotificationService notificationService;
-
     @Autowired
     private UserService userService;
 

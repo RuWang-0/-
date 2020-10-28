@@ -4,8 +4,8 @@ import com.bbs.common.base.BaseController;
 import com.bbs.common.dto.BBSResult;
 import com.bbs.common.entity.Reply;
 import com.bbs.common.entity.User;
-import com.bbs.service.ReplyService;
-import com.bbs.service.UserService;
+import com.bbs.rest.service.ReplyService;
+import com.bbs.rest.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -21,13 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/reply")
 public class ReplyController extends BaseController{
-
     @Autowired
     private com.bbs.rest.controller.WebSocketController webSocketController;
-
     @Autowired
     private UserService userService;
-
     @Autowired
     private ReplyService replyService;
     @ApiOperation("发布回复接口")

@@ -2,8 +2,8 @@ package com.bbs.rest.controller;
 
 import com.bbs.common.dto.UploadResult;
 import com.bbs.common.exception.ServiceProcessException;
-import com.bbs.service.UserService;
-import com.bbs.utils.FileUtils;
+import com.bbs.rest.service.UserService;
+import com.bbs.rest.utils.FileUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,6 @@ import java.io.IOException;
 @RequestMapping("/upload")
 @CrossOrigin
 public class UploadController {
-
     @Autowired
     private UserService userService;
 
