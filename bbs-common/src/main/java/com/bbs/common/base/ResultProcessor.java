@@ -1,9 +1,9 @@
 package com.bbs.common.base;
 
 
-import com.bbs.common.dto.bbsResult;
+import com.bbs.common.dto.BBSResult;
 
 @FunctionalInterface
 public interface ResultProcessor {
-    bbsResult process();
+    BBSResult process();
 }

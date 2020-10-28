@@ -19,7 +19,7 @@ public class swaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.quark.rest.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.bbs.rest.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

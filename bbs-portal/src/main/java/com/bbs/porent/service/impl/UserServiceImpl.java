@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getUserByApi(String token) {
         String s = HttpClientUtils.doGet(api_getUserByToken + token);
-        BbsResult bbsResult = JsonUtils.jsonToBbsResult(s, User.class);
-        User data= (User) bbsResult.getData();
+        BbsResult BBSResult = JsonUtils.jsonToBbsResult(s, User.class);
+        User data= (User) BBSResult.getData();
         return data;
     }
 }

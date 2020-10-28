@@ -1,7 +1,7 @@
 package com.bbs.controller;
 
 import com.bbs.common.base.BaseController;
-import com.bbs.common.dto.bbsResult;
+import com.bbs.common.dto.BBSResult;
 import com.bbs.service.RankService;
 import com.bbs.service.RedisService;
 import io.swagger.annotations.Api;
@@ -33,29 +33,29 @@ public class RankController extends BaseController {
 
     @ApiOperation("获取一个月内热帖排行榜")
     @GetMapping("/topPosts")
-    public bbsResult getTotPosts() {
-        bbsResult result = restProcessor(() -> {
+    public BBSResult getTotPosts() {
+        BBSResult result = restProcessor(() -> {
             List<Object> hot = redisService.getString(REDIS_RANK_POSTS);
             if (hot != null) {
-                return bbsResult.ok(hot);
+                return BBSResult.ok(hot);
             }
             hot = rankService.findPostsRank();
             redisService.cacheString(REDIS_RANK_POSTS, hot, 1);
-            return bbsResult.ok(hot);
+            return BBSResult.ok(hot);
         });
         return result;
     }
 
     @ApiOperation("获取一个月内新注册的用户")
     @GetMapping("/newUsers")
-    public bbsResult getNewUser() {
-        bbsResult result = restProcessor(() -> {
+    public BBSResult getNewUser() {
+        BBSResult result = restProcessor(() -> {
             List<Object> users = redisService.getString(REDIS_RANK_USERS);
-            if (users != null) return bbsResult.ok(users);
+            if (users != null) return BBSResult.ok(users);
 
             users = rankService.findUserRank();
             redisService.cacheString(REDIS_RANK_USERS, users, 1);
-            return bbsResult.ok(users);
+            return BBSResult.ok(users);
         });
         return result;
     }

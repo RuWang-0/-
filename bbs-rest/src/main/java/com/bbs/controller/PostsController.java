@@ -1,7 +1,7 @@
 package com.bbs.controller;
 
 import com.bbs.common.base.BaseController;
-import com.bbs.common.dto.bbsResult;
+import com.bbs.common.dto.BBSResult;
 import com.bbs.common.entity.Label;
 import com.bbs.common.entity.Posts;
 import com.bbs.common.entity.Reply;
@@ -49,19 +49,19 @@ public class PostsController extends BaseController {
             @ApiImplicitParam(name = "labelId", value = "标签ID", dataType = "Integer")
     })
     @PostMapping
-    public bbsResult CreatePosts(Posts posts, String token, Integer labelId) {
-        bbsResult result = restProcessor(() -> {
+    public BBSResult CreatePosts(Posts posts, String token, Integer labelId) {
+        BBSResult result = restProcessor(() -> {
 
-            if (token == null) return bbsResult.warn("请先登录！");
+            if (token == null) return BBSResult.warn("请先登录！");
 
             User userbytoken = userService.getUserByToken(token);
-            if (userbytoken == null) return bbsResult.warn("用户不存在,请先登录！");
+            if (userbytoken == null) return BBSResult.warn("用户不存在,请先登录！");
 
             User user = userService.findOne(userbytoken.getId());
-            if (user.getEnable() != 1) return bbsResult.warn("用户处于封禁状态！");
+            if (user.getEnable() != 1) return BBSResult.warn("用户处于封禁状态！");
 
             postsService.savePosts(posts, labelId, user);
-            return bbsResult.ok();
+            return BBSResult.ok();
         });
 
         return result;
@@ -75,16 +75,16 @@ public class PostsController extends BaseController {
             @ApiImplicitParam(name = "length", value = "返回结果数量[默认20]", dataType = "int")
     })
     @GetMapping()
-    public bbsResult GetPosts(
+    public BBSResult GetPosts(
             @RequestParam(required = false, defaultValue = "") String search,
             @RequestParam(required = false, defaultValue = "") String type,
             @RequestParam(required = false, defaultValue = "1") int pageNo,
             @RequestParam(required = false, defaultValue = "20") int length) {
-        bbsResult result = restProcessor(() -> {
+        BBSResult result = restProcessor(() -> {
             if (!type.equals("good") && !type.equals("top") && !type.equals(""))
-                return bbsResult.error("类型错误!");
+                return BBSResult.error("类型错误!");
             Page<Posts> page = postsService.getPostsByPage(type, search, pageNo - 1, length);
-            return bbsResult.ok(page.getContent(), page.getTotalElements(), page.getNumberOfElements());
+            return BBSResult.ok(page.getContent(), page.getTotalElements(), page.getNumberOfElements());
 
         });
 
@@ -100,20 +100,20 @@ public class PostsController extends BaseController {
             @ApiImplicitParam(name = "length", value = "返回结果数量[默认20]", dataType = "int")
     })
     @GetMapping("/detail/{postsid}")
-    public bbsResult GetPostsDetail(
+    public BBSResult GetPostsDetail(
             @PathVariable("postsid") Integer postsid,
             @RequestParam(required = false, defaultValue = "1") int pageNo,
             @RequestParam(required = false, defaultValue = "20") int length) {
-        bbsResult result = restProcessor(() -> {
+        BBSResult result = restProcessor(() -> {
             HashMap<String, Object> map = new HashMap<>();
             Posts posts = postsService.findOne(postsid);
-            if (posts == null) return bbsResult.error("帖子不存在");
+            if (posts == null) return BBSResult.error("帖子不存在");
             map.put("posts", posts);
 
             Page<Reply> page = replyService.getReplyByPage(postsid, pageNo - 1, length);
             map.put("replys", page.getContent());
 
-            return bbsResult.ok(map, page.getTotalElements(), page.getNumberOfElements());
+            return BBSResult.ok(map, page.getTotalElements(), page.getNumberOfElements());
         });
         return result;
 
@@ -126,16 +126,16 @@ public class PostsController extends BaseController {
             @ApiImplicitParam(name = "length", value = "返回结果数量[默认20]", dataType = "int"),
     })
     @GetMapping("/label/{labelid}")
-    public bbsResult GetPostsByLabel(
+    public BBSResult GetPostsByLabel(
             @PathVariable("labelid") Integer labelid,
             @RequestParam(required = false, defaultValue = "1") int pageNo,
             @RequestParam(required = false, defaultValue = "20") int length) {
 
-        bbsResult result = restProcessor(() -> {
+        BBSResult result = restProcessor(() -> {
             Label label = labelService.findOne(labelid);
-            if (label == null) return bbsResult.error("标签不存在");
+            if (label == null) return BBSResult.error("标签不存在");
             Page<Posts> page = postsService.getPostsByLabel(label, pageNo - 1, length);
-            return bbsResult.ok(page.getContent(), page.getTotalElements(), page.getNumberOfElements());
+            return BBSResult.ok(page.getContent(), page.getTotalElements(), page.getNumberOfElements());
 
         });
 

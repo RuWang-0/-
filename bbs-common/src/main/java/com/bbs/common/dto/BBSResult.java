@@ -6,7 +6,7 @@ import com.bbs.common.enums.StateEnum;
 import java.io.Serializable;
 
 
-public class bbsResult implements Serializable {
+public class BBSResult implements Serializable {
 
     /**
      * 响应业务状态
@@ -77,7 +77,7 @@ public class bbsResult implements Serializable {
      * 请求成功
      * @param status
      */
-    public bbsResult(Integer status) {
+    public BBSResult(Integer status) {
         this.status = status;
     }
 
@@ -86,7 +86,7 @@ public class bbsResult implements Serializable {
      * @param status
      * @param data
      */
-    public bbsResult(Integer status, Object data) {
+    public BBSResult(Integer status, Object data) {
         this.status = status;
         this.data = data;
     }
@@ -98,7 +98,7 @@ public class bbsResult implements Serializable {
      * @param pageSize
      * @param total
      */
-    public bbsResult(Integer status, Object data, long pageSize, Integer total) {
+    public BBSResult(Integer status, Object data, long pageSize, Integer total) {
         this.status = status;
         this.data = data;
         this.pageSize = pageSize;
@@ -110,26 +110,26 @@ public class bbsResult implements Serializable {
      * @param status
      * @param error
      */
-    public bbsResult(Integer status, String error) {
+    public BBSResult(Integer status, String error) {
         this.status = status;
         this.error = error;
     }
 
-    public static bbsResult ok(){
-        return new bbsResult(StateEnum.SUCCESS.getState());
+    public static BBSResult ok(){
+        return new BBSResult(StateEnum.SUCCESS.getState());
     }
 
-    public static bbsResult ok(Object data){
-        return new bbsResult(StateEnum.SUCCESS.getState(),data);
+    public static BBSResult ok(Object data){
+        return new BBSResult(StateEnum.SUCCESS.getState(),data);
     }
 
-    public static bbsResult warn(String warn){return new bbsResult(StateEnum.WARN.getState(),warn);}
+    public static BBSResult warn(String warn){return new BBSResult(StateEnum.WARN.getState(),warn);}
 
-    public static bbsResult error(String error){
-        return new bbsResult(StateEnum.ERROR.getState(),error);
+    public static BBSResult error(String error){
+        return new BBSResult(StateEnum.ERROR.getState(),error);
     }
 
-    public static bbsResult ok(Object data, long pageSize, Integer total){
-        return new bbsResult(StateEnum.SUCCESS.getState(),data,pageSize,total);
+    public static BBSResult ok(Object data, long pageSize, Integer total){
+        return new BBSResult(StateEnum.SUCCESS.getState(),data,pageSize,total);
     }
 }

@@ -1,7 +1,7 @@
 package com.bbs.controller;
 
 import com.bbs.common.base.BaseController;
-import com.bbs.common.dto.bbsResult;
+import com.bbs.common.dto.BBSResult;
 import com.bbs.common.entity.Reply;
 import com.bbs.common.entity.User;
 import com.bbs.service.ReplyService;
@@ -35,18 +35,18 @@ public class ReplyController extends BaseController{
             @ApiImplicitParam(name = "postsId", value = "帖子ID", dataType = "Integer")
     })
     @PostMapping
-    public bbsResult CreateReply(Reply reply,Integer postsId,String token){
-        bbsResult result = restProcessor(() -> {
-            if (token == null) return bbsResult.warn("请先登录！");
+    public BBSResult CreateReply(Reply reply,Integer postsId,String token){
+        BBSResult result = restProcessor(() -> {
+            if (token == null) return BBSResult.warn("请先登录！");
 
             User userbytoken = userService.getUserByToken(token);
-            if (userbytoken == null) return bbsResult.warn("用户不存在,请先登录！");
+            if (userbytoken == null) return BBSResult.warn("用户不存在,请先登录！");
 
             User user = userService.findOne(userbytoken.getId());
-            if (user.getEnable() != 1) return bbsResult.warn("用户处于封禁状态！");
+            if (user.getEnable() != 1) return BBSResult.warn("用户处于封禁状态！");
 
             replyService.saveReply(reply, postsId, user);
-            return bbsResult.ok();
+            return BBSResult.ok();
         });
         return result;
     }
